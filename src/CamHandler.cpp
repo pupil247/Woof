@@ -7,7 +7,7 @@ void CamHandler::start(){
 
 void CamHandler::task(){
     while(1){
-        digitalWrite(LED_ONBOARD, HIGH);
+        //digitalWrite(LED_ONBOARD, HIGH);
         vTaskDelay(pdMS_TO_TICKS(1000)); 
     }
     

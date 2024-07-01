@@ -5,6 +5,9 @@
 #include "freertos/task.h"
 #include "ioMapping.h"
 #include "CamHandler.h"
+#include "ScreenHandler.h"
+#include "sprite.h"
+#include <M5Core2.h>
 
 using namespace ioMapping;
 
@@ -24,6 +27,7 @@ private:
 
     //Tasks
     CamHandler camHandler;
+    ScreenHandler screenHandler;
     
     
 public:
