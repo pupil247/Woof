@@ -12,7 +12,7 @@
 #define EYE_Y0 40
 #define EYE_RADIUS 30
 #define EYE_HEIGHT_CLOSED 20
-#define BLINK_SPEED 3
+#define BLINK_SPEED 8
 
 enum screenState_t{
     WAITING,
@@ -38,8 +38,8 @@ private:
     static ScreenHandler * pObjet;
     TFT_eSprite * faceSprite;
 
-    uint8_t swipeCounter;
-    uint8_t tapCounter;
+    volatile uint8_t swipeCounter;
+    volatile uint8_t tapCounter;
     static void task();
 
     //sprite actions
