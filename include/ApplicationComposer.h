@@ -6,6 +6,7 @@
 #include "ioMapping.h"
 #include "CamHandler.h"
 #include "M5Core2.h"
+#include "WifiHandler.h"
 
 using namespace ioMapping;
 
@@ -25,6 +26,7 @@ private:
 
     //Tasks
     CamHandler camHandler;
+    WifiHandler wifiHandler;
     
     
 public:

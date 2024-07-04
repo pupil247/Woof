@@ -3,6 +3,8 @@
 esp_err_t ApplicationComposer::init(){
     M5.begin();
     camHandler.start();
+    wifiHandler.start();
+    Serial.begin(115200);
     return ESP_OK;
 }
 
