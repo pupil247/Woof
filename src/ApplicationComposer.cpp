@@ -59,6 +59,11 @@ esp_err_t ApplicationComposer::loop(){
     // 惯性传感器温度输出相关
     M5.Lcd.setCursor(0, 175);
     M5.Lcd.printf("Temperature : %.2f C", temp);
+    M5.update();
+    if (M5.BtnA.wasReleased()) {  
+        // Implement your shutdown logic here
+        M5.shutdown();  // Power off M5Stack
+    }
     return ESP_OK;
 }
 

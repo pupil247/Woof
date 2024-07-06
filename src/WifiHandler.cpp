@@ -18,8 +18,10 @@ void WifiHandler::task(){
         while (WiFi.status() != WL_CONNECTED) {
             vTaskDelay(pdMS_TO_TICKS(1000)); 
             Serial.println("Connecting to WiFi...");
-        }
+        }   
+        //reception
 
+        //envoie des informations du robot a l'application
         Serial.println("Connected to WiFi");
         vTaskDelay(pdMS_TO_TICKS(1000)); 
     }
