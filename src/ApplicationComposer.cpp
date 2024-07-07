@@ -1,7 +1,7 @@
 #include "ApplicationComposer.h"
 
 esp_err_t ApplicationComposer::init(){
-    M5.begin();
+    M5.begin(true, false);
     camHandler.start();
     wifiHandler.start();
     Serial.begin(115200);
@@ -10,7 +10,7 @@ esp_err_t ApplicationComposer::init(){
 
 esp_err_t ApplicationComposer::loop(){
     //main task loop
-    M5.IMU.Init(); 
+    //M5.IMU.Init(); 
     float accX = 0.0F;  // Define variables for storing inertial sensor data
     float accY = 0.0F;  // 定义存储惯性传感器相关数据的相关变量
     float accZ = 0.0F;
@@ -24,7 +24,7 @@ esp_err_t ApplicationComposer::loop(){
     float yaw   = 0.0F;
 
     float temp = 0.0F;
-    M5.IMU.getGyroData(&gyroX, &gyroY, &gyroZ);
+    /*M5.IMU.getGyroData(&gyroX, &gyroY, &gyroZ);
     
     M5.IMU.getAccelData(
         &accX, &accY,
@@ -33,7 +33,7 @@ esp_err_t ApplicationComposer::loop(){
         &pitch, &roll,
         &yaw);  // Stores the inertial sensor attitude.  存储惯性传感器的姿态
     
-    M5.IMU.getTempData(&temp);
+    M5.IMU.getTempData(&temp);*/
      M5.Lcd.setCursor(
         0, 20);  // Move the cursor position to (x,y).  移动光标位置到(x,y)处
     M5.Lcd.printf("gyroX,  gyroY, gyroZ");  // Screen printingformatted string.
@@ -64,11 +64,18 @@ esp_err_t ApplicationComposer::loop(){
         // Implement your shutdown logic here
         M5.shutdown();  // Power off M5Stack
     }
+    vTaskDelay(pdMS_TO_TICKS(1000));
+    digitalWrite(GPIO_NUM_19, HIGH);
+    vTaskDelay(pdMS_TO_TICKS(1000));
+    digitalWrite(GPIO_NUM_19, LOW);
     return ESP_OK;
 }
 
 esp_err_t ApplicationComposer::hardwareSetup(){
     pinMode(LED_ONBOARD, OUTPUT);
+    pinMode(GPIO_NUM_19, OUTPUT);
+    pinMode(GPIO_NUM_27, OUTPUT);
+    pinMode(GPIO_NUM_23, OUTPUT);
     return ESP_OK;
 }
 
